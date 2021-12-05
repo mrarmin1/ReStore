@@ -17,7 +17,7 @@ namespace API.Data
                     Name = "Laptop 1",
                     Description = "Odlican proizvod",
                     Price = 500,
-                    PictureUrl = "/images/laptop1.jpg",
+                    PictureUrl = "/images/slika7.jpeg",
                     Brand = "HP",
                     Type = "Laptop",
                     QuantityInStock = 100
@@ -28,8 +28,8 @@ namespace API.Data
                     Name = "Laptop 2",
                     Description = "Odlican proizvod",
                     Price = 700,
-                    PictureUrl = "/images/laptop2.jpeg",
-                    Brand = "Acus",
+                    PictureUrl = "/images/slika2.jpeg",
+                    Brand = "Mac",
                     Type = "Laptop",
                     QuantityInStock = 150
 
@@ -39,7 +39,7 @@ namespace API.Data
                     Name = "Laptop 3",
                     Description = "Odlican proizvod",
                     Price = 1500,
-                    PictureUrl = "/images/laptop3.png",
+                    PictureUrl = "/images/slika3.jpeg",
                     Brand = "Mac",
                     Type = "Laptop",
                     QuantityInStock = 200
@@ -50,7 +50,7 @@ namespace API.Data
                     Name = "Laptop 4",
                     Description = "Odlican proizvod",
                     Price = 500,
-                    PictureUrl = "/images/laptop5.png",
+                    PictureUrl = "/images/slika5.jpeg",
                     Brand = "Lenovo",
                     Type = "Laptop",
                     QuantityInStock = 101
@@ -61,13 +61,13 @@ namespace API.Data
                     Name = "Laptop 5",
                     Description = "Odlican proizvod",
                     Price = 700,
-                    PictureUrl = "/images/laptop4.jpeg",
-                    Brand = "HP",
+                    PictureUrl = "/images/slika6.jpeg",
+                    Brand = "Asus",
                     Type = "Laptop",
                     QuantityInStock = 140
 
                 },
-
+                
             };
             foreach(var product in products)
             {
