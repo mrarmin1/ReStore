@@ -12,8 +12,6 @@ import NotFound from '../errors/NotFound';
 import ServerError from '../errors/ServerError';
 
 
-
-
 function App() {
   const theme = createTheme({
     palette: {
@@ -26,7 +24,6 @@ function App() {
       <ToastContainer position='bottom-right' hideProgressBar/>
       <CssBaseline />
       <Header />
-
       <Container>
         <Switch>
          <Route exact path="/" component={HomePage} />
