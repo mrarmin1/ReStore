@@ -1,7 +1,7 @@
 import { AppBar, Badge, Box, IconButton, List, ListItem, Toolbar, Typography } from "@material-ui/core";
 import { ShoppingCart } from "@material-ui/icons";
 import { Link, NavLink } from "react-router-dom";
-import { useStoreContext } from "../context/StoreContext";
+import { useAppSelector } from "../store/configureStore";
 
 const midLinks = [
     {title: 'catalog', path: '/catalog'},
@@ -14,7 +14,7 @@ const rightLinks = [
 ]
 
 export default function Header() {
-    const {basket} = useStoreContext();
+    const {basket} = useAppSelector(state => state.basket);
     const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0);
 
     return (
