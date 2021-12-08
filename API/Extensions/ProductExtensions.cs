@@ -1,5 +1,6 @@
 using System.Linq;
 using API.Entities;
+using Microsoft.Extensions.Logging.Configuration;
 
 namespace API.Extensions
 {
@@ -15,6 +16,14 @@ namespace API.Extensions
                 _ => query.OrderBy(p => p.Name) 
             };
             return query;
+        }
+
+        public static IQueryable<Product> Search(this IQueryable<Product> query, string searchTerm)
+        {
+            if(string.IsNullOrEmpty(searchTerm)) return query;
+
+            var lowerCaseSearchTerm = searchTerm.Trim().ToLower();
+            return query.Where(p => p.Name.ToLower().Contains(lowerCaseSearchTerm));
         }
     }
 }
