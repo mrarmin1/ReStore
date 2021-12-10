@@ -10,33 +10,33 @@ import HomePage from '../../features/home/HomePage';
 import NotFound from '../errors/NotFound';
 import ServerError from '../errors/ServerError';
 import BasketPage from '../../features/basket/BasketPage';
-import { useEffect, useState } from 'react';
-import { getCookie } from '../util/util';
-import agent from '../api/agent';
+import { useCallback, useEffect, useState } from 'react';
 import LoadingComponent from './LoadingComponent';
 import CheckoutPage from '../../features/checkout/CheckoutPage';
 import ContactPage from '../../features/contact/ContactPage';
 import { useAppDispatch } from '../store/configureStore';
-import { setBasket } from '../../features/basket/basketSlice';
+import { fetchBasketAsync } from '../../features/basket/basketSlice';
 import Login from '../../features/account/Login';
 import Register from '../../features/account/Register';
+import { fetchCurrentUser } from '../../features/account/accountSlice';
 
 
 function App() {
    const dispatch = useAppDispatch();
    const [loading, setLoading] = useState(true);
 
+   const initApp = useCallback(async () => {
+    try {
+      await dispatch(fetchCurrentUser());
+      await dispatch(fetchBasketAsync());
+    } catch (error) {
+      console.log(error);
+    }
+  }, [dispatch])
+
    useEffect(() => {
-     const buyerId = getCookie('buyerId');
-     if(buyerId) {
-       agent.Basket.get()
-       .then(basket => dispatch(setBasket(basket)))
-       .catch(error => console.log(error))
-       .finally(() => setLoading(false));
-     } else {
-       setLoading(false);
-     }
-   }, [dispatch])
+    initApp().then(() => setLoading(false));
+   }, [initApp])
 
   const theme = createTheme({
     palette: {
