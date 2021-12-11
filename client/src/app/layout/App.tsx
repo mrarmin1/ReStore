@@ -13,13 +13,13 @@ import BasketPage from '../../features/basket/BasketPage';
 import { useCallback, useEffect, useState } from 'react';
 import LoadingComponent from './LoadingComponent';
 import CheckoutPage from '../../features/checkout/CheckoutPage';
-import ContactPage from '../../features/contact/ContactPage';
 import { useAppDispatch } from '../store/configureStore';
 import { fetchBasketAsync } from '../../features/basket/basketSlice';
 import Login from '../../features/account/Login';
 import Register from '../../features/account/Register';
 import { fetchCurrentUser } from '../../features/account/accountSlice';
 import PrivateRoute from './PrivateRoute';
+import Orders from '../../features/orders/Orders';
 
 
 function App() {
@@ -52,20 +52,24 @@ function App() {
       <ToastContainer position='bottom-right' hideProgressBar/>
       <CssBaseline />
       <Header />
-      <Container>
-        <Switch>
-         <Route exact path="/" component={HomePage} />
-         <Route exact path="/catalog" component={Catalog} />
-         <Route exact path="/catalog/:id" component={ProductDetails}/>
-         <Route exact path="/contact" component={ContactPage}/>
-         <Route exact path="/server-error" component={ServerError}/>
-         <Route exact path="/basket" component={BasketPage}/>
-         <PrivateRoute exact path="/checkout" component={CheckoutPage}/>
-         <Route exact path="/login" component={Login}/>
-         <Route exact path="/register" component={Register}/>
-         <Route component={NotFound}/>
-         </Switch>
-      </Container>
+      <Route exact path="/" component={HomePage} />
+      <Route path={'/(.+)'} render={() => (
+
+<Container sx={{mt : 4}}>
+<Switch>
+ <Route exact path="/catalog" component={Catalog} />
+ <Route exact path="/catalog/:id" component={ProductDetails}/>
+ <Route exact path="/server-error" component={ServerError}/>
+ <Route exact path="/basket" component={BasketPage}/>
+ <PrivateRoute exact path="/checkout" component={CheckoutPage}/>
+ <PrivateRoute exact path="/orders" component={Orders}/>
+ <Route exact path="/login" component={Login}/>
+ <Route exact path="/register" component={Register}/>
+ <Route component={NotFound}/>
+ </Switch>
+</Container>
+      )}/>
+      
     </ThemeProvider>
   );
 } 
