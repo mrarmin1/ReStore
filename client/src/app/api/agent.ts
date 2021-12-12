@@ -125,7 +125,8 @@ const agent = {
     TestErrors,
     Basket,
     Account,
-    Orders
+    Orders,
+    Admin
 }
 
 export default agent;
