@@ -20,6 +20,7 @@ import Register from '../../features/account/Register';
 import { fetchCurrentUser } from '../../features/account/accountSlice';
 import PrivateRoute from './PrivateRoute';
 import Orders from '../../features/orders/Orders';
+import Inventory from '../../features/admin/Inventory';
 
 
 function App() {
@@ -62,13 +63,13 @@ function App() {
              <Route exact path="/basket" component={BasketPage}/>
              <PrivateRoute exact path="/checkout" component={CheckoutPage}/>
              <PrivateRoute exact path="/orders" component={Orders}/>
+             <PrivateRoute roles={['Admin']} path='/inventory' component={Inventory} />
              <Route exact path="/login" component={Login}/>
              <Route exact path="/register" component={Register}/>
              <Route component={NotFound}/>
           </Switch>
         </Container>
-         )}/>
-      
+         )}/>     
     </ThemeProvider>
   );
 } 

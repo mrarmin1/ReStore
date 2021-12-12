@@ -35,6 +35,7 @@ export default function Header() {
             <Toolbar sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                 <Box display='flex' alignItems='center'>
                 <Typography variant='h6'>
+                
                     Armin-STORE
                 </Typography>
                 </Box>
@@ -44,20 +45,19 @@ export default function Header() {
                             component={NavLink}
                             to={path}
                             key={path}
-                            sx={{
-                                color: 'inherit', 
-                                typography: 'h6',
-                                '&:hover': {
-                                    color: 'grey.500'
-                                },
-                                '&.active': {
-                                    color: 'text.secondary'
-                                }
-                            }}
+                            sx={{ navStyles }}
                         >
                             {title.toUpperCase()}
-                        </ListItem>
+                        </ListItem>                       
                     ))}
+                    {user && user.roles?.includes('Admin') &&
+                    <ListItem
+                        component={NavLink}
+                        to={'/inventory'}
+                        sx={navStyles}
+                    >
+                        INVENTORY
+                    </ListItem>}
                 </List>
 
                 <Box display='flex' alignItems='center'>
