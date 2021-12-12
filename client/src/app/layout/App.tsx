@@ -54,21 +54,20 @@ function App() {
       <Header />
       <Route exact path="/" component={HomePage} />
       <Route path={'/(.+)'} render={() => (
-
-<Container sx={{mt : 4}}>
-<Switch>
- <Route exact path="/catalog" component={Catalog} />
- <Route exact path="/catalog/:id" component={ProductDetails}/>
- <Route exact path="/server-error" component={ServerError}/>
- <Route exact path="/basket" component={BasketPage}/>
- <PrivateRoute exact path="/checkout" component={CheckoutPage}/>
- <PrivateRoute exact path="/orders" component={Orders}/>
- <Route exact path="/login" component={Login}/>
- <Route exact path="/register" component={Register}/>
- <Route component={NotFound}/>
- </Switch>
-</Container>
-      )}/>
+        <Container sx={{mt : 4}}>
+          <Switch>
+             <Route exact path="/catalog" component={Catalog} />
+             <Route exact path="/catalog/:id" component={ProductDetails}/>
+             <Route exact path="/server-error" component={ServerError}/>
+             <Route exact path="/basket" component={BasketPage}/>
+             <PrivateRoute exact path="/checkout" component={CheckoutPage}/>
+             <PrivateRoute exact path="/orders" component={Orders}/>
+             <Route exact path="/login" component={Login}/>
+             <Route exact path="/register" component={Register}/>
+             <Route component={NotFound}/>
+          </Switch>
+        </Container>
+         )}/>
       
     </ThemeProvider>
   );
